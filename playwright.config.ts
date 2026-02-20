@@ -12,7 +12,7 @@ export default defineConfig({
     workers: process.env.CI ? 1 : undefined,
     reporter: "html",
     use: {
-        baseURL: "http://localhost:5173",
+        baseURL: "http://localhost:4173",
         trace: "on-first-retry",
     },
     projects: [
@@ -30,10 +30,11 @@ export default defineConfig({
             use: { ...devices["iPhone 14"] },
         },
     ],
-    /* ローカルでは dev サーバーを自動起動 */
+    /* CI では vite preview を使う（ビルド済み） */
     webServer: {
-        command: "pnpm dev",
-        url: "http://localhost:5173",
+        command: "pnpm preview",
+        url: "http://localhost:4173",
         reuseExistingServer: !process.env.CI,
+        timeout: 60 * 1000,
     },
 });
