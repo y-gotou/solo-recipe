@@ -1,0 +1,9 @@
+# すべてのテキストファイルを LF で正規化（WSL/Windows 混在環境対応）
+* text=auto eol=lf
+
+# バイナリファイルは変換しない
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+*.woff binary
